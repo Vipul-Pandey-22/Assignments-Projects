@@ -1,0 +1,22 @@
+a. Calculate total sales per year
+select year_id, sum(sales) as sales_per_year from sales_order_orc group by year_id;
+
+b. Find a product for which maximum orders were placed.
+select productline, sum(quantityordered) as sum_of_order from sales_order_orc group by productline order by sum_of_order DESC limit 1;
+
+c. Calculate the total sales for each quarter.
+select qtr_id, sum(sales) as total_sales from sales_order_orc group by qtr_id
+
+d. In which quarter sales were minimum.
+select qtr_id, min(sales) as minimum_sales from sales_order_orc group by qtr_id order by minimum_sales limit 1;
+
+e. In which country sales were maximum and in which country sales were minimum.
+select country, sum(sales) as total_sales from sales_order_orc group by country order by max_sales DESC limit 1
+union all
+select country, sum(sales) as total_sales from sales_order_orc group by country, order by min sales limit 1;
+
+f. Calculate quartelry sales for each city.
+select qtr_id, min(sales) from sales_order_orc group by city, qtr_id;
+
+h. Find a month for each year in which maximum number of quantities were sold.
+**with my as(select year_id, month_id, sum(quantityordered) as max_ordered from sales_order_orc group by year_id, month_id), my2 as(select year_id, max(max_ordered) as max_sales from my group by year_id) select my2.year_id, month_id, max_sales from my inner join my2 on my.max_sales = my2.max_sales;**
