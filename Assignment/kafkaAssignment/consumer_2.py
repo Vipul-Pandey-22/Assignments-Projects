@@ -44,16 +44,6 @@ class Order:
         return f"{self.record}"
 
 
-def makeCSV(jsonData, w):
-    # with open('./output.csv', 'w', newline='') as f:
-    #     w = csv.writer(f)
-    #     w.writerow(['order_number', 'order_date', 'item_name', 'quantity', 'product_price', 'total_products'])
-        rowList = []
-        for col in jsonData:
-            rowList.append(col)
-        w.writerow(rowList)
-
-
 def main(topic):
     schema_registry_conf = schema_config()
     schema_registry_client = SchemaRegistryClient(schema_registry_conf)
