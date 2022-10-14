@@ -37,19 +37,11 @@ def schema_config():
             }
 
 
-# def dict_to_order(data, ctx):
-    # FILE_PATH = r"D:\Confluent-Kafka-Setup\restaurant_orders.csv"
-    # df = pd.read_csv(FILE_PATH)
-    # df = df.iloc[:, :]
-    # for data in df.values:
-    # return data
+def dict_to_order(data, ctx):
+    return data
 
 
 def order_to_dict(data, ctx):
-    # FILE_PATH = r"D:\Confluent-Kafka-Setup\restaurant_orders.csv"
-    # df = pd.read_csv(FILE_PATH)
-    # for data in df.values:
-    #     orderToDict = dict(zip(columns, data))
     return data
 
 
