@@ -38,6 +38,7 @@ def schema_config():
             }
 
 
+# This method will help us in order to save consumes data into .csv file
 def createCSVFromConsumerData(jsonData, w):
     rowList = []
     for col in jsonData:
@@ -46,18 +47,10 @@ def createCSVFromConsumerData(jsonData, w):
 
 
 def dict_to_order(data, ctx):
-    # FILE_PATH = r"D:\Confluent-Kafka-Setup\restaurant_orders.csv"
-    # df = pd.read_csv(FILE_PATH)
-    # df = df.iloc[:, :]
-    # for data in df.values:
     return data
 
 
 def order_to_dict(data, ctx):
-    # FILE_PATH = r"D:\Confluent-Kafka-Setup\restaurant_orders.csv"
-    # df = pd.read_csv(FILE_PATH)
-    # for data in df.values:
-    #     orderToDict = dict(zip(columns, data))
     return data
 
 
@@ -95,6 +88,8 @@ consumer_conf.update({
 
 consumer = Consumer(consumer_conf)
 consumer.subscribe([topic])
+
+
 with open('./output.csv', 'w', newline='') as f:
     w = csv.writer(f)
     w.writerow(['order_number', 'order_date', 'item_name', 'quantity', 'product_price', 'total_products'])
@@ -111,6 +106,7 @@ with open('./output.csv', 'w', newline='') as f:
                 ))
 
             createCSVFromConsumerData(resData.values(), w)
+            
         except KeyboardInterrupt:
             pass
         except ValueError:
