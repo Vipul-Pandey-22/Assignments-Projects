@@ -82,7 +82,7 @@ def main(topic):
                 print("User record {}: order: {} from {} partition and from {} offset\n"
                       .format(msg.key(), order, msg.partition(), msg.partition(), msg.offset()))
 
-                makeCSV(order.record.values(), w)
+         
         except KeyboardInterrupt:
             break
     consumer.close()
