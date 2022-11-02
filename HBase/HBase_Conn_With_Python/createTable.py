@@ -12,8 +12,8 @@ try:
     conn.create_table(
         'org',
         {
-            depart_id: dict(),
-            depart_name: dict()
+            'depart_id': dict(),
+            'depart_name': dict()
         }
     )
     print("Table has been created successfully")
